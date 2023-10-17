@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="tests.css">
+</head>
+<body>
+  <div class="quiz-container">
+    <div class="question">Question 1: qwertyuiopasdfghjklzxcvbnm?</div>
+    <div class="options">
+      <label class="option">
+        <input type="radio" name="q1" value=""> op1
+      </label>
+      <label class="option">
+        <input type="radio" name="q1" value=""> op2
+      </label>
+      <label class="option">
+        <input type="radio" name="q1" value=""> op3
+      </label>
+      <label class="option">
+        <input type="radio" name="q1" value=""> op3
+      </label>
+    </div>
+    <button id="next-button">Next</button>
+    <div id="status">Solved: 0 / Remaining: 1</div>
+  </div>
+
+  <script>
+    const nextButton = document.getElementById("next-button");
+    const status = document.getElementById("status");
+    const options = document.querySelectorAll("input[type=radio]");
+
+    let solved = 0;
+    let remaining = options.length;
+
+    nextButton.addEventListener("click", () => {
+      const selectedOption = document.querySelector('input[name="q1"]:checked');
+      if (selectedOption) {
+        solved++;
+        remaining--;
+        status.textContent = `Solved: ${solved} / Remaining: ${remaining}`;
+        // You can add more questions and logic for navigation here
+      } else {
+        alert("Please select an option.");
+      }
+    });
+  </script>
+</body>
+</html>
